@@ -1,0 +1,14 @@
+{
+    "name": "beef_e/pool-car",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Giammaria Biffi",
+            "email": "102854627+beef-e@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0",
+        "twbs/bootstrap": "5.3.3"
+    }
+}
