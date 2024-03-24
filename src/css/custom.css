@@ -4,3 +4,13 @@
 	--bs-btn-bg: #fd7e14;
 	--bs-btn-border-color: #fd7e14;
 }
+
+#my-button {
+	background-color: #fd7e14;
+	border-color: #fd7e14;
+	color: rgb(0, 0, 0);
+}
+
+#my-button:hover {
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
