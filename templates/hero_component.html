@@ -1,0 +1,46 @@
+<div>
+	<div
+		class="d-flex flex-column justify-content-center align-items-center"
+		id="hero">
+		<div class="background"></div>
+		<h1 class="display-1 fw-bold">PoolCar</h1>
+		<p class="text-body-secondary fs-4">Il car sharing che ti permette di risparmiare</p>
+		<a
+			href="/login"
+			class="btn btn-primary fs-4 mt-3 px-5 py-2 rounded-pill"
+			id="login-button"
+			>Inizia subito</a
+		>
+	</div>
+</div>
+<style>
+	#hero {
+		height: 94.82vh;
+	}
+	.background {
+		position: absolute;
+		width: 100%;
+		height: 94.82%;
+		top: 5.18%;
+		z-index: -1;
+		background-image: url(https://images.pexels.com/photos/2533092/pexels-photo-2533092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		filter: blur(25px) brightness(0.7);
+	}
+	#hero h1 {
+		color: rgb(255, 255, 255);
+	}
+	#hero p {
+		color: rgb(221, 221, 221) !important;
+	}
+	#login-button {
+		background-color: #fd7e14;
+		border-color: #fd7e14;
+		color: rgb(0, 0, 0);
+	}
+	#login-button:hover {
+		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+	}
+</style>
