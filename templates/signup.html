@@ -38,8 +38,61 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required />
                 </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Telefono</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required />
+                </div>
+                <div class="mb-3">
+                    <label for="id_number" class="form-label">Numero Carta di Identità</label>
+                    <input type="text" class="form-control" id="id_number" name="id_number" required />
+                </div>
+                <div class="mb-3">
+                    <label for="id_expiry" class="form-label">Scadenza Carta di Identità</label>
+                    <input type="date" class="form-control" id="id_expiry" name="id_expiry" required />
+                </div>
+                <div class="mb-3">
+                    <label for="birthdate" class="form-label">Data di Nascita</label>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" required />
+                </div>
+                <div class="mb-3">
+                    <label for="credit_card" class="form-label">Numero Carta di Credito</label>
+                    <input type="text" class="form-control" id="credit_card" name="credit_card" required />
+                </div>
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Foto</label>
+                    <input type="file" class="form-control" id="photo" name="photo" accept="image/*" />
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="driver" name="driver" />
+                    <label class="form-check-label" for="driver">Diventa autista</label>
+                </div>
+                <div id="driver-fields" style="display: none;">
+                    <div class="mb-3">
+                        <label for="license_number" class="form-label">Numero Patente</label>
+                        <input type="text" class="form-control" id="license_number" name="license_number" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="license_expiry" class="form-label">Scadenza Patente</label>
+                        <input type="date" class="form-control" id="license_expiry" name="license_expiry" />
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary fs-4 mt-3 px-5 py-2 rounded-pill">Registrati</button>
             </form>
         </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const driverCheckbox = document.getElementById('driver');
+        const driverFields = document.getElementById('driver-fields');
+
+        driverCheckbox.addEventListener('change', function() {
+            if (driverCheckbox.checked) {
+                driverFields.style.display = 'block';
+            } else {
+                driverFields.style.display = 'none';
+            }
+        });
+    });
+</script>
 </html>
