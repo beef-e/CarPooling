@@ -19,8 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $credit_card = $_POST['credit_card'];
 
     if (isset($_POST['license_number'])) {
+        $role = 'driver';
         $license = $_POST['license_number'];
         $license_expiry = $_POST['license_expiry'];
+    } else {
+        $role = 'basic';
     }
 
     // echo $name . $surname . $username . $email . $password . $phone . $identita . $scadenza_id . $birthdate . $credit_card . $license . $license_expiry;
