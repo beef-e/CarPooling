@@ -22,21 +22,25 @@
             <div
                 class="d-flex flex-column justify-content-center align-items-center"
                 id="home">
-                <h1 class="display-1 fw-bold">Benvenuto {{user.name}}</h1>
-                <p class="lead">Il tuo ruolo è {{ user.role }}</p>
+                <h1 class="display-1 fw-bold">Benvenuto {{user.nome}}</h1>
+                <p class="lead">Il tuo ruolo è {% if user.role is same as("d") %}
+					Driver
+				{% else %}
+					Basic
+				{% endif %}</p>
                 <p class="lead">Il tuo id è {{ user.id }}</p>
                 <p class="lead">Il tuo email è {{ user.email }}</p>
-                <p class="lead">Il tuo telefono è {{ user.phone }}</p>
-                <p class="lead">Il tuo numero di carta di identità è {{ user.id_number }}</p>
-                <p class="lead">La scadenza della tua carta di identità è {{ user.id_expiry }}</p>
-                <p class="lead">La tua data di nascita è {{ user.birthdate }}</p>
-                <p class="lead">Il tuo numero di carta di credito è {{ user.credit_card }}</p>
+                <p class="lead">Il tuo telefono è {{ user.tel }}</p>
+                <p class="lead">Il tuo numero di carta di identità è {{ user.carta_id }}</p>
+                <p class="lead">La scadenza della tua carta di identità è {{ user.scad_id }}</p>
+                <p class="lead">La tua data di nascita è {{ user.data_nascita }}</p>
+                <p class="lead">Il tuo numero di carta di credito è {{ user.carta_credito }}</p>
             </div>
 
 			<div class="d-flex justify-content-evenly align-items-center mt-5">
 				<a href="/poolCar/logout.php" class="btn btn-primary" id="my-button">Logout</a>
 				<a href="#" class="btn btn-primary" id="my-button">Cerca un viaggio</a>
-				{% if true %}
+				{% if user.role is same as("d") %}
 				<a href="/poolCar/createtrip_controller.php" class="btn btn-primary" id="my-button">Crea un viaggio</a>
 				{% endif %}
 			</div>
