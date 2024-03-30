@@ -16,4 +16,11 @@ if (isset($_SESSION['user'])) {
 }
 */
 
-echo $twig->render('home.html');
+$dati = $_SESSION;
+
+
+if (isset($_SESSION['email'])) {
+    echo $twig->render('home.html', ['user' => $dati]);
+} else {
+    header('Location: index.php');
+}
