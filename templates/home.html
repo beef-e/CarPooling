@@ -40,9 +40,12 @@
 			<div class="d-flex justify-content-evenly align-items-center mt-5">
 				<a href="/poolCar/logout.php" class="btn btn-primary" id="my-button">Logout</a>
 				<a href="#" class="btn btn-primary" id="my-button">Cerca un viaggio</a>
+
 				{% if user.role is same as("d") %}
 				<a href="/poolCar/createtrip_controller.php" class="btn btn-primary" id="my-button">Crea un viaggio</a>
 				{% endif %}
+				
+				<a href="/poolCar/mytrips_controller.php" class="btn btn-primary" id="my-button">I miei viaggi</a>
 			</div>
 	</body>
 	<script

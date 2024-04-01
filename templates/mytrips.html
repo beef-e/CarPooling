@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>I miei viaggi</title>
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous" />
+
+		<link
+			rel="stylesheet"
+			href="src/css/custom.css" />
+	</head>
+	<body>
+		{% include 'header_component.html' %}
+
+		<div>
+			<div
+				class="d-flex flex-column justify-content-center align-items-center"
+				id="home">
+				<h1 class="display-1 fw-bold">I tuoi viaggi</h1>
+			</div>
+
+			<!--
+                TODO se l'utente è un driver, visualizzare i viaggi creati da lui
+
+                TODO se l'utente è un passeggero, visualizzare i viaggi per cui si è prenotato
+            -->
+
+			{% if user.role is same as("d") %}
+			<!-- query sql per mostrare i viaggio dove l'utente offerente è quello dell'utente attuale-->
+			{% for trip in trips %}
+			<div class="d-flex justify-content-center mt-4">
+				<div
+					class="card"
+					style="width: 18rem">
+					<div class="card-body">
+						<h5 class="card-title">Viaggio da {{ trip.partenza }} a {{ trip.destinazione }}</h5>
+						<p class="card-text">Data di partenza: {{ trip.data_viaggio }}</p>
+						<p class="card-text">Ora di partenza: {{ trip.ora }}</p>
+						<p class="card-text">Prezzo: {{ trip.prezzo }}€</p>
+						<!--TODO: basing on the bookings table, see how many bookings there are for the trip and subtract it from the available_seats-->
+						<p class="card-text">Posti disponibili: {{ trip.posti }}</p>
+						<!--<a href="/poolCar/trip_controller.php?id={{ trip.id }}" class="btn btn-primary">Visualizza</a>-->
+					</div>
+				</div>
+			</div>
+			{% endfor %} {% endif %}
+		</div>
+	</body>
+</html>
