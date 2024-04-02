@@ -51,6 +51,23 @@
 					</div>
 				</div>
 			</div>
+			{% endfor %} {% endif %} {% if user.ruolo is same as("b") %} {% for trip in trips %}
+			<div class="d-flex justify-content-center mt-4">
+				<div
+					class="card"
+					style="width: 18rem">
+					<div class="card-body">
+						<h5 class="card-title">Viaggio da {{ trip.partenza }} a {{ trip.destinazione }}</h5>
+						<p class="card-text">Data di partenza: {{ trip.data_viaggio }}</p>
+						<p class="card-text">Ora di partenza: {{ trip.ora }}</p>
+						<p class="card-text">Prezzo: {{ trip.prezzo }}€</p>
+						<p class="card-text">
+							Posti prenotati: {% for book in bookings %} {% if book.codice_viaggio is same as
+							(trip.id) %} {{ book.n_prenotazioni }} {% endif %} {% endfor %}
+						</p>
+					</div>
+				</div>
+			</div>
 			{% endfor %} {% endif %}
 		</div>
 	</body>
