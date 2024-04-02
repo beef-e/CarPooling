@@ -20,7 +20,7 @@ if ($_SESSION['ruolo'] == "d") {
     // TODO: If the user is not a driver, fetch all the bookings made by the user and all the trips the user has booked
 
     //$query = "SELECT * FROM Prenotazioni WHERE id_utente = '{$_SESSION['id']}'";
-    $query = "SELECT codice_viaggio, COUNT(*) as n_prenotazioni From Prenotazioni Where id_utente='{$_SESSION['id']}' group by codice_viaggio, id_utente";
+    $query = "SELECT codice_viaggio, stato, COUNT(*) as n_prenotazioni From Prenotazioni Where id_utente='{$_SESSION['id']}' group by codice_viaggio, id_utente";
     $result = mysqli_query($conn, $query);
     $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

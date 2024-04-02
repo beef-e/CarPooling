@@ -65,6 +65,11 @@
 							Posti prenotati: {% for book in bookings %} {% if book.codice_viaggio is same as
 							(trip.id) %} {{ book.n_prenotazioni }} {% endif %} {% endfor %}
 						</p>
+						<p class="card-text">
+							Stato prenotazione: {% for book in bookings %} {% if book.codice_viaggio is same as
+							(trip.id) %} {% if book.stato is same as ("a") %} Accettata {% elseif book.stato is
+							same as ("r") %} Rifiutata {% else %} In attesa {% endif %} {% endif %} {% endfor %}
+						</p>
 					</div>
 				</div>
 			</div>
