@@ -26,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $license_expiry = NULL;
 
     if (isset($_POST['driver'])) {
-        $role = 'd';
+        $ruolo = 'd';
         $license = $_POST['license_number'];
         $license_expiry = $_POST['license_expiry'];
     } else {
-        $role = 'b';
+        $ruolo = 'b';
         $license = NULL;
         $license_expiry = '0000-01-01';
     }
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // TODO insert the user into the database
 
-    $query = "INSERT INTO Utenti (nome, conome, email, password, tel, carta_id, scad_id, data_nascita, carta_credito, ruolo, patente_id, scad_patente) VALUES ('$name', '$surname', '$email', '$password', '$phone', '$identita', '$scadenza_id', '$birthdate', '$credit_card', '$role', '$license', '$license_expiry')";
+    $query = "INSERT INTO Utenti (nome, conome, email, password, tel, carta_id, scad_id, data_nascita, carta_credito, ruolo, patente_id, scad_patente) VALUES ('$name', '$surname', '$email', '$password', '$phone', '$identita', '$scadenza_id', '$birthdate', '$credit_card', '$ruolo', '$license', '$license_expiry')";
     $result = mysqli_query($conn, $query);
 
     if ($result) {

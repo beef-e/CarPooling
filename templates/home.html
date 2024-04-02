@@ -23,7 +23,7 @@
                 class="d-flex flex-column justify-content-center align-items-center"
                 id="home">
                 <h1 class="display-1 fw-bold">Benvenuto {{user.nome}}</h1>
-                <p class="lead">Il tuo ruolo è {% if user.role is same as("d") %}
+                <p class="lead">Il tuo ruolo è {% if user.ruolo is same as("d") %}
 					Driver
 				{% else %}
 					Basic
@@ -41,7 +41,7 @@
 				<a href="/poolCar/logout.php" class="btn btn-primary" id="my-button">Logout</a>
 				<a href="#" class="btn btn-primary" id="my-button">Cerca un viaggio</a>
 
-				{% if user.role is same as("d") %}
+				{% if user.ruolo is same as("d") %}
 				<a href="/poolCar/createtrip_controller.php" class="btn btn-primary" id="my-button">Crea un viaggio</a>
 				{% endif %}
 				

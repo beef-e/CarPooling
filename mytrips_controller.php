@@ -8,7 +8,7 @@ $twig = new \Twig\Environment($loader);
 
 echo $twig->render('mytrips.html', ['user' => $_SESSION]);
 
-if ($_SESSION['role'] == "d") {
+if ($_SESSION['ruolo'] == "d") {
     $conn = mysqli_connect('localhost', 'pool', '', 'poolCar');
     $query = "SELECT * FROM Viaggi WHERE id_utente_offerente = '{$_SESSION['id']}'";
     $result = mysqli_query($conn, $query);

@@ -6,7 +6,7 @@ $loader = new \Twig\Loader\FilesystemLoader('templates');
 
 $twig = new \Twig\Environment($loader);
 
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['nome'])) {
     header('Location: home_controller.php');
 } else {
     echo $twig->render('login.html');

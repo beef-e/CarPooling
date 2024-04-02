@@ -33,7 +33,7 @@
                 TODO se l'utente è un passeggero, visualizzare i viaggi per cui si è prenotato
             -->
 
-			{% if user.role is same as("d") %}
+			{% if user.ruolo is same as("d") %}
 			<!-- query sql per mostrare i viaggio dove l'utente offerente è quello dell'utente attuale-->
 			{% for trip in trips %}
 			<div class="d-flex justify-content-center mt-4">
