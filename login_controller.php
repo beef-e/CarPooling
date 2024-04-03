@@ -47,4 +47,10 @@ function assign_sess_values($row)
     $_SESSION['scad_id'] = $row['scad_id'];
     $_SESSION['data_nascita'] = $row['data_nascita'];
     $_SESSION['carta_credito'] = $row['carta_credito'];
+    if ($_SESSION['role'] === "d") {
+        $_SESSION['data_pat'] = $row['scad_patente'];
+        $_SESSION['pat_id'] = $row['patente_id'];
+        $_SESSION['media_voto'] = $row['media_voto'];
+        $_SESSION['n_voti'] = $row['n_voti'];
+    }
 }
