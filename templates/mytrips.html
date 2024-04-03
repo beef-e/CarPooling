@@ -81,6 +81,26 @@
 							(trip.id) %} {% if book.stato is same as ("a") %} Accettata {% elseif book.stato is
 							same as ("r") %} Rifiutata {% else %} In attesa {% endif %} {% endif %} {% endfor %}
 						</p>
+						{% for book in bookings %} {% if book.codice_viaggio is same as (trip.id) %} {% if
+						book.stato is same as ("a") %}
+						<h5 class="card-title range-value">Feedback:</h5>
+						<div class="card-text">
+							<input
+								type="range"
+								class="form-range my-range"
+								name="feedback_{{book.codice_viaggio}}"
+								id="feedback_{{book.codice_viaggio}}"
+								min="1"
+								max="5"
+								step="1" />
+							<button
+								class="btn btn-action btn-success"
+								id="confirm_{{book.codice_viaggio}}"
+								disabled>
+								Invia Feedback
+							</button>
+						</div>
+						{% endif %} {% endif %} {% endfor %}
 					</div>
 				</div>
 			</div>
@@ -103,6 +123,10 @@
 				type="text"
 				name="action"
 				id="action" />
+			<input
+				type="number"
+				name="feedback"
+				id="feedback" />
 		</form>
 	</body>
 	<script
@@ -116,6 +140,10 @@
 		const id_viaggio = document.querySelector('#id_viaggio');
 		const id_utente_input = document.querySelector('#id_utente');
 		const action_input = document.querySelector('#action');
+
+		const range_input = document.querySelector('#feedback');
+		const ranges = document.querySelectorAll('.my-range');
+		const rangeValue = document.querySelector('.range-value');
 
 		buttons.forEach((button) => {
 			button.addEventListener('click', (e) => {
@@ -135,6 +163,30 @@
 				`;
 
 				form.submit();
+			});
+		});
+
+		ranges.forEach((range) => {
+			range.addEventListener('change', (e) => {
+				const id_viaggio = e.target.id.split('_')[1];
+				const feedback = e.target.value;
+
+				rangeValue.innerHTML = `Feedback: ${feedback}`;
+
+				range_input.value = feedback;
+
+				const id_confirm = `#confirm_${id_viaggio}`;
+
+				const confirm = document.querySelector(id_confirm);
+
+				confirm.disabled = false;
+
+				e.target.disabled = true;
+
+				confirm.addEventListener('click', (e) => {
+					form.submit();
+				});
+				//form.submit();
 			});
 		});
 	</script>
