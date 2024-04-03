@@ -46,6 +46,11 @@
 						{% for book in bookings %} {% if book.codice_viaggio is same as (trip.id) %}
 						<p class="card-text">Id Passeggero: {{ book.id_utente }}</p>
 						<p class="card-text">Numero di posti prenotati: {{ book.n_prenotazioni }}</p>
+						{% if book.stato is same as ("a") %}
+						<p class="card-text pb-3 text-success">Richiesta accettata</p>
+						{% endif %} {% if book.stato is same as ("r") %}
+						<p class="card-text pb-3 text-danger">Richiesta rifiutata</p>
+						{% endif %} {% if book.stato is same as ("s") %}
 						<div id="buttons_{{book.id_utente}}_{{book.codice_viaggio}}">
 							<button
 								class="btn btn-action btn-success"
@@ -58,7 +63,7 @@
 								Rifiuta
 							</button>
 						</div>
-						{% endif %} {% endfor %}
+						{% endif %} {% endif %} {% endfor %}
 					</div>
 				</div>
 			</div>
