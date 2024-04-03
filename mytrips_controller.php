@@ -24,7 +24,7 @@ if ($_SESSION['ruolo'] == "d") {
 } else {
     // TODO: If the user is not a driver, fetch all the bookings made by the user and all the trips the user has booked
 
-    $query = "SELECT codice_viaggio, stato, COUNT(*) as n_prenotazioni From Prenotazioni Where id_utente='{$_SESSION['id']}' group by codice_viaggio, id_utente";
+    $query = "SELECT *, COUNT(*) as n_prenotazioni From Prenotazioni Where id_utente='{$_SESSION['id']}' group by codice_viaggio, id_utente";
     $result = mysqli_query($conn, $query);
     $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -59,14 +59,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     } else {
+        // *I am a basic user
         $feedback = $_POST["feedback"];
 
         //Select utenti il cui ID è in viaggi, tra i viaggi i cui id sono tra le prenotazioni dell'utente attualmente loggato
 
-        //Query fatta interamente da solo a mano sono troppo forte
+        // !Query fatta interamente da solo a mano sono troppo forte
         $query = "SELECT * FROM Utenti where id IN (SELECT id_utente_offerente FROM Viaggi where id in (SELECT codice_viaggio FROM Prenotazioni WHERE id_utente='{$_SESSION['id']}'))";
         $result = mysqli_query($conn, $query);
-        //in teoria deve ritornare sempre un solo utente
+        // !in teoria deve ritornare sempre un solo utente
         $driver = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         $driver = $driver[0];
@@ -97,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$result) {
             echo "errore in updating n_voti";
         }
-        $query = "INSERT INTO Feedback (voto, id_ut_act, id_ut_pass) VALUES ('{$feedback}', '{$_SESSION['id']}', '{$driver['id']}')";
+        $query = "INSERT INTO Feedback (voto, id_ut_act, id_ut_pass, id_prenotazione) VALUES ('{$feedback}', '{$_SESSION['id']}', '{$driver['id']}', '{$_POST['id_prenotazione']}')";
         $result = mysqli_query($conn, $query);
         if (!$result) {
             echo "errore in updating feedback table";

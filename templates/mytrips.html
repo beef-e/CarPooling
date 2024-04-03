@@ -104,6 +104,12 @@
 								disabled>
 								Invia Feedback
 							</button>
+							<input
+								type="number"
+								name="id_prenotazione"
+								id="id_prenotazione_{{book.codice_viaggio}}"
+								style="display: none"
+								value="{{book.codice}}" />
 						</div>
 						{% endif %} {% endif %} {% endfor %}
 					</div>
@@ -132,6 +138,10 @@
 				type="number"
 				name="feedback"
 				id="feedback" />
+			<input
+				type="number"
+				name="id_prenotazione"
+				id="id_prenotazione" />
 		</form>
 	</body>
 	<script
@@ -142,7 +152,7 @@
 	<script>
 		const form = document.querySelector('form');
 		const buttons = document.querySelectorAll('.btn-action');
-		const id_viaggio = document.querySelector('#id_viaggio');
+		const id_viaggio_input = document.querySelector('#id_viaggio');
 		const id_utente_input = document.querySelector('#id_utente');
 		const action_input = document.querySelector('#action');
 
@@ -155,7 +165,7 @@
 				const [action, id_utente, codice_viaggio] = e.target.id.split('_');
 
 				id_utente_input.value = id_utente;
-				id_viaggio.value = codice_viaggio;
+				id_viaggio_input.value = codice_viaggio;
 				action_input.value = action;
 
 				const buttons_div = document.querySelector(`#buttons_${id_utente}_${codice_viaggio}`);
@@ -175,10 +185,13 @@
 			range.addEventListener('change', (e) => {
 				const id_viaggio = e.target.id.split('_')[1];
 				const feedback = e.target.value;
+				const codice_prenotazione = document.querySelector(`#id_prenotazione_${id_viaggio}`).value;
+				const id_prenotazione_input = document.querySelector('#id_prenotazione');
 
 				rangeValue.innerHTML = `Feedback: ${feedback}`;
 
 				range_input.value = feedback;
+				id_prenotazione_input.value = codice_prenotazione;
 
 				const id_confirm = `#confirm_${id_viaggio}`;
 
