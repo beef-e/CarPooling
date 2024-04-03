@@ -3,6 +3,7 @@
 	--bs-primary-rgb: 253, 126, 20;
 	--bs-btn-bg: #fd7e14;
 	--bs-btn-border-color: #fd7e14;
+	--form-range-thumb-bg: #fd7e14;
 }
 
 #my-button {
@@ -13,4 +14,8 @@
 
 #my-button:hover {
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.my-range::-webkit-slider-thumb {
+	background-color: var(--form-range-thumb-bg);
 }
