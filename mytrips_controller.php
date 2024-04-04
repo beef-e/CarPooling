@@ -8,6 +8,8 @@ $twig = new \Twig\Environment($loader);
 
 $conn = mysqli_connect('localhost', 'pool', '', 'poolCar');
 
+$displayFeedback = true;
+
 //if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 if ($_SESSION['ruolo'] == "d") {
     $query = "SELECT * FROM Viaggi WHERE id_utente_offerente = '{$_SESSION['id']}'";
@@ -102,7 +104,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = mysqli_query($conn, $query);
         if (!$result) {
             echo "errore in updating feedback table";
+        } else {
+            echo "Feedback inserito con successo";
+            $query = "SELECT id_prenotazione from Feedback WHERE id_prenotazione = '{$_POST['id_prenotazione']}'";
+            $result = mysqli_query($conn, $query);
+            $feedback = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            if (count($feedback) > 0) {
+                $displayFeedback = false;
+            }
         }
     }
 }
-echo $twig->render('mytrips.html', ['user' => $_SESSION, 'bookings' => $bookings, 'trips' => $trips]);
+echo $twig->render('mytrips.html', ['user' => $_SESSION, 'bookings' => $bookings, 'trips' => $trips, 'displayFeedback' => $displayFeedback]);

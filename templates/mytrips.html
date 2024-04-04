@@ -87,7 +87,7 @@
 							same as ("r") %} Rifiutata {% else %} In attesa {% endif %} {% endif %} {% endfor %}
 						</p>
 						{% for book in bookings %} {% if book.codice_viaggio is same as (trip.id) %} {% if
-						book.stato is same as ("a") %}
+						book.stato is same as ("a") %} {% if displayFeedback %}
 						<h5 class="card-title range-value">Feedback:</h5>
 						<div class="card-text">
 							<input
@@ -111,7 +111,9 @@
 								style="display: none"
 								value="{{book.codice}}" />
 						</div>
-						{% endif %} {% endif %} {% endfor %}
+						{% endif %} {% if displayFeedback == false %}
+						<h5 class="card-title">Feedback inviato con successo!</h5>
+						{% endif %} {% endif %} {% endif %} {% endfor %}
 					</div>
 				</div>
 			</div>
